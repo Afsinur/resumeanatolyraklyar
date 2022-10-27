@@ -8,7 +8,7 @@ function App() {
   }, 10);
 
   return (
-    <div className="App d-flx flx-y y-y-jc-sa">
+    <div className="App d-flx flx-y y-x-c w-100%">
       <Nav />
       <InformationDiv />
     </div>

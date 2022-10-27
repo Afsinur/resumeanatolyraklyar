@@ -29,6 +29,14 @@ const mk_arr = (tmpArr) => Array.from(tmpArr);
 //! box-shadow = bx-shd-
 //! text-shadow = tx-shd-
 
+//! min-width = min-w-
+//! max-width = max-w-
+
+//! media queries
+//! fs = s-max-768-fs-
+//! w = s-max-768-w-
+//! r = s-max-768-r-
+
 const cssJs = () => {
   for (let i = 0; i < document.getElementsByTagName("*").length; i++) {
     const el = document.getElementsByTagName("*")[i];
@@ -273,6 +281,96 @@ const cssJs = () => {
         css(el, {
           "min-width": splt[1],
         });
+      }
+    }
+
+    //max-w-
+    mtc = "max-w-";
+    arr = mk_arr(el.classList);
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].indexOf(mtc) >= 0) {
+        let splt = arr[i].split(mtc);
+
+        css(el, {
+          "max-width": splt[1],
+        });
+      }
+    }
+
+    //media query
+    mtc = "s-max-768-fs-";
+    arr = mk_arr(el.classList);
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].indexOf(mtc) >= 0) {
+        let splt = arr[i].split(mtc);
+
+        if (window.innerWidth <= 768) {
+          css(el, {
+            "font-size": splt[1],
+          });
+        }
+      }
+    }
+
+    //media query
+    mtc = "s-max-768-r-";
+    arr = mk_arr(el.classList);
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].indexOf(mtc) >= 0) {
+        let splt = arr[i].split(mtc);
+
+        if (window.innerWidth <= 768) {
+          css(el, {
+            right: splt[1],
+          });
+        }
+      }
+    }
+
+    //media query
+    mtc = "s-max-768-w-";
+    arr = mk_arr(el.classList);
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].indexOf(mtc) >= 0) {
+        let splt = arr[i].split(mtc);
+
+        if (window.innerWidth <= 768) {
+          console.log(el);
+          css(el, {
+            width: splt[1],
+          });
+        }
+      }
+    }
+
+    //media query
+    mtc = "s-max-768-p-";
+    arr = mk_arr(el.classList);
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].indexOf(mtc) >= 0) {
+        let splt = arr[i].split(mtc);
+        let sprt = splt[1].split("-");
+
+        if (window.innerWidth <= 768) {
+          if (sprt.length === 1) {
+            css(el, {
+              padding: `${sprt[0]} `,
+            });
+          } else if (sprt.length === 2) {
+            css(el, {
+              padding: `${sprt[0]} ${sprt[1]}`,
+            });
+          } else if (sprt.length === 4) {
+            css(el, {
+              padding: `${sprt[0]} ${sprt[1]} ${sprt[2]} ${sprt[3]}`,
+            });
+          }
+        }
       }
     }
   }
